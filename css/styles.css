@@ -38,7 +38,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -87,6 +87,8 @@ p { margin: 0 0 1rem; }
 .lead { color: var(--muted); font-size: 1.06rem; }
 .muted { color: var(--muted); font-size: .85rem; }
 .nowrap { white-space: nowrap; }
+/* Long emails/URLs must never push the layout wider than the screen. */
+.contact-list a, .pay-hint, .success-ref, .comp-desc, .comp-points li { overflow-wrap: anywhere; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -105,6 +107,7 @@ p { margin: 0 0 1rem; }
   cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
   text-align: center;
+  max-width: 100%;
 }
 .btn:hover { transform: translateY(-2px); color: var(--navy); box-shadow: 0 10px 24px rgba(0, 45, 100, 0.12); }
 .btn:active { transform: translateY(0); }
@@ -343,6 +346,7 @@ p { margin: 0 0 1rem; }
   box-shadow: var(--shadow);
 }
 .link-buttons { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+.unstop-links { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
 
 /* ---------- Notices ---------- */
 .notice { border-radius: var(--radius-sm); padding: 1rem 1.2rem; border: 1px solid var(--border-strong); }
@@ -514,13 +518,22 @@ td.empty { text-align: center; color: var(--muted); padding: 2.4rem 1rem; }
 .toast-error { border-color: var(--red); background: #7a1a12; color: #ffd9d4; }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .hero-grid { gap: 2.2rem; }
+  .hero h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); }
+}
+
 @media (max-width: 900px) {
+  .hero { padding: 3rem 0 2.4rem; }
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .pay-grid { grid-template-columns: 1fr; }
+  .pay-grid { grid-template-columns: 1fr; gap: 1.6rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 3.6rem 0; }
+  .section-head { margin-bottom: 2rem; }
 }
-@media (max-width: 720px) {
+
+@media (max-width: 820px) {
   .nav-toggle { display: flex; }
   .nav-menu {
     position: absolute;
@@ -536,12 +549,44 @@ td.empty { text-align: center; color: var(--muted); padding: 2.4rem 1rem; }
   }
   .nav-menu.open { display: flex; }
   .nav-menu a { padding: .7rem .8rem; }
+  .nav-menu .btn { width: 100%; }
+}
+
+@media (max-width: 720px) {
   .form-row { grid-template-columns: 1fr; }
   .section { padding: 3.2rem 0; }
   .form-wrap { padding: 1.4rem; }
   .cd-lbl { font-size: .6rem; }
+  /* Stack inline button groups full-width so long labels never overflow. */
+  .hero-actions,
+  .unstop-links,
+  .link-buttons { flex-direction: column; align-items: stretch; }
 }
+
+@media (max-width: 560px) {
+  .container { width: min(100% - 1.8rem, var(--maxw)); }
+  .section { padding: 2.6rem 0; }
+  .card, .comp-card { padding: 1.25rem; }
+  .form-wrap { padding: 1.1rem; }
+  .pay-amount { font-size: 2rem; }
+  .qr-img, #upi-qr { width: 180px; height: 180px; }
+  .pay-badge { width: 118px; height: 118px; font-size: 3rem; }
+  .stats { gap: .7rem; }
+  .stat { padding: .9rem 1rem; }
+  .modal-card { padding: 1.2rem; }
+  h3 { font-size: 1.15rem; }
+}
+
 @media (max-width: 420px) {
   .stats { grid-template-columns: 1fr; }
   .countdown { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: clamp(2rem, 12vw, 2.6rem); }
+  .step { gap: .8rem; padding: 1rem; }
+  .detail-row, .pay-list li { flex-direction: column; gap: .15rem; }
+  .detail-row strong, .pay-list li strong { text-align: left; }
+}
+
+/* Touch devices: skip hover "lift" so taps don't look sticky. */
+@media (hover: none) {
+  .btn:hover, .comp-card:hover { transform: none; }
 }

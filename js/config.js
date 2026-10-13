@@ -29,7 +29,7 @@ window.ARONEX_CONFIG = {
                 which needs a Supabase project. See README.md. */
   registration: {
     mode: "unstop",
-    unstopUrl: "https://unstop.com/o/rRjGv5f?lb=2plaAQoR", // official Unstop page
+    unstopUrl: "https://unstop.com/o/rRjGv5f?lb=2plaAQoR", // fallback link if a competition has no unstopUrl below
     // Extra registration options shown next to the Unstop button (optional)
     forms: [
       {
@@ -65,6 +65,8 @@ window.ARONEX_CONFIG = {
   competitions: [
     {
       key: "Ideathon",
+      // Unstop page for this competition (used by the card + register buttons)
+      unstopUrl: "https://unstop.com/o/rRjGv5f?lb=2plaAQoR",
       icon: "💡",
       title: "Ideathon",
       tagline: "Pitch an idea that solves a real problem.",
@@ -78,6 +80,8 @@ window.ARONEX_CONFIG = {
     },
     {
       key: "Poster Presentation",
+      // Unstop page for this competition (used by the card + register buttons)
+      unstopUrl: "https://unstop.com/o/Jknsmf3?lb=2plaAQoR",
       icon: "🖼️",
       title: "Poster Presentation",
       tagline: "Showcase your work on a technical poster.",

@@ -76,13 +76,25 @@ npx serve .
 ```js
 registration: {
   mode: "unstop",
-  unstopUrl: "https://unstop.com/...",   // ← your link
+  unstopUrl: "https://unstop.com/...",   // ← fallback / general link
   note: "",                              // optional extra line
 },
 ```
 
 Every **Register on Unstop** button now points there. Until you add a link, the
 site shows a polite "link coming soon" note instead of a broken button.
+
+**One Unstop page per competition:** give each competition its own `unstopUrl`
+in the `competitions` list. Each competition card and its register button then
+point to that exact page (the general `registration.unstopUrl` above is only used
+as a fallback):
+
+```js
+competitions: [
+  { key: "Ideathon",            unstopUrl: "https://unstop.com/o/AAAA", ... },
+  { key: "Poster Presentation", unstopUrl: "https://unstop.com/o/BBBB", ... },
+],
+```
 
 You can also list **extra registration options** (e.g. a Google Form per
 competition) via `registration.forms`, and a **rulebook** link via

@@ -23,6 +23,23 @@
 
   function isUnstopMode() { return MODE === "unstop"; }
   function unstopUrl() { return String(registration.unstopUrl || "").trim(); }
+  // Unstop page for one competition (falls back to the general unstopUrl).
+  function competitionUnstopUrl(c) {
+    return String((c && c.unstopUrl) || registration.unstopUrl || "").trim();
+  }
+  // All competition-specific Unstop links, in registration order.
+  function unstopTargets() {
+    var list = [];
+    competitions.forEach(function (c) {
+      var u = String((c && c.unstopUrl) || "").trim();
+      if (u) list.push({ label: c.title || c.key || "", url: u });
+    });
+    if (!list.length) {
+      var u = unstopUrl();
+      if (u) list.push({ label: "", url: u });
+    }
+    return list;
+  }
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
@@ -124,9 +141,9 @@
 
       var cta;
       if (isUnstopMode()) {
-        var u = unstopUrl();
+        var u = competitionUnstopUrl(c);
         cta = u
-          ? '<a class="btn btn-ghost comp-cta" href="' + esc(u) + '" target="_blank" rel="noopener">Register on Unstop</a>'
+          ? '<a class="btn btn-ghost comp-cta" href="' + esc(u) + '" target="_blank" rel="noopener">Register for ' + esc(c.title || c.key) + " on Unstop</a>"
           : '<a class="btn btn-ghost comp-cta" href="#register">Register for ' + esc(c.title || c.key) + "</a>";
       } else {
         cta = '<button class="btn btn-ghost comp-cta" type="button" data-comp="' + esc(c.key) + '">Register for ' + esc(c.title || c.key) + "</button>";
@@ -208,8 +225,6 @@
 
     /* Unstop-first mode: the fee is collected on Unstop, not here. */
     if (isUnstopMode()) {
-      var u = unstopUrl();
-      var payee = organizer.upiPayeeName || "";
       var h = "";
       h += '<div class="pay-grid">';
       h += '<div class="pay-details">';
@@ -219,9 +234,17 @@
       h += "<li><span>Platform</span><strong>Unstop</strong></li>";
       h += "<li><span>Payment</span><strong>Secure online</strong></li>";
       h += "</ul>";
-      h += u
-        ? '<a class="btn btn-primary" href="' + esc(u) + '" target="_blank" rel="noopener">Register &amp; pay on Unstop</a>'
-        : '<a class="btn btn-primary" href="#register">See registration details</a>';
+      var targets = unstopTargets();
+      if (targets.length) {
+        h += '<div class="unstop-links" style="justify-content:flex-start">';
+        h += targets.map(function (t) {
+          var label = t.label ? "Register for " + t.label : "Register on Unstop";
+          return '<a class="btn btn-primary" href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>";
+        }).join("");
+        h += "</div>";
+      } else {
+        h += '<a class="btn btn-primary" href="#register">See registration details</a>';
+      }
       h += '<p class="pay-hint">You complete the payment inside your Unstop registration. Keep the receipt Unstop provides.</p>';
       if (registration.note) h += '<p class="pay-hint">' + esc(registration.note) + "</p>";
       h += "</div>";
@@ -330,6 +353,16 @@
     if (list) list.innerHTML = items.join("");
   }
 
+  function renderUnstopLinks() {
+    var box = $("#unstop-links");
+    if (!box) return;
+    var targets = unstopTargets();
+    box.innerHTML = targets.map(function (t) {
+      var label = t.label ? "Register for " + t.label + " on Unstop" : "Register on Unstop";
+      return '<a class="btn btn-primary" href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>";
+    }).join("");
+  }
+
   function renderAltForms() {
     var wrap = $("#alt-forms");
     var list = $("#alt-forms-list");
@@ -370,14 +403,11 @@
       if (builtin) builtin.hidden = true;
       if (adminLink) adminLink.hidden = true;
 
-      var u = unstopUrl();
-      var cta = $("#unstop-cta");
+      var hasUnstop = unstopTargets().length > 0;
+      renderUnstopLinks();
       var fallback = $("#unstop-fallback");
+      if (fallback) fallback.hidden = hasUnstop;
       var note = $("#unstop-note");
-      if (cta) {
-        if (u) cta.href = u; else cta.hidden = true;
-      }
-      if (fallback) fallback.hidden = Boolean(u);
       if (note && registration.note) { note.textContent = registration.note; note.hidden = false; }
       renderAltForms();
     } else {
