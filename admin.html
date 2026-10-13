@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARONEX 1.0 — Organiser Dashboard</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#07070f" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ============ LOGIN ============ -->
+  <section class="login-wrap" id="login-view">
+    <div class="login-card">
+      <a class="brand" href="index.html">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0070c0" /><stop offset="1" stop-color="#ffc000" />
+            </linearGradient>
+          </defs>
+          <path d="M24 3l18 10.5v21L24 45 6 34.5v-21z" fill="none" stroke="url(#ag)" stroke-width="2.6" />
+          <path d="M17 34l7-20 7 20M19.5 28h9" fill="none" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="brand-name">ARONEX <span class="brand-ver">1.0</span></span>
+      </a>
+      <h2 style="text-align:center;font-size:1.4rem">Organiser sign-in</h2>
+      <p class="lead" style="text-align:center;font-size:.92rem">Authorised committee members only. There is no public sign-up.</p>
+
+      <div class="form-messages error" id="login-error" hidden></div>
+
+      <form id="login-form">
+        <div class="field" style="margin-bottom:1rem">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" autocomplete="username" required />
+        </div>
+        <div class="field" style="margin-bottom:1.4rem">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+      <p class="muted" style="text-align:center;margin-top:1.2rem">
+        <a href="index.html">← Back to the public site</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <div id="dashboard-view" hidden>
+    <div class="admin-topbar">
+      <div class="container">
+        <a class="brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 3l18 10.5v21L24 45 6 34.5v-21z" fill="none" stroke="#0070c0" stroke-width="2.6" />
+            <path d="M17 34l7-20 7 20M19.5 28h9" fill="none" stroke="#ffc000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="brand-name">ARONEX <span class="brand-ver">Admin</span></span>
+        </a>
+        <div class="admin-user">
+          <span id="admin-email" class="muted"></span>
+          <button class="btn btn-ghost btn-mini" id="logout-btn" type="button">Sign out</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container admin-main">
+      <div class="section-head" style="margin-bottom:1.4rem">
+        <span class="eyebrow">Registrations</span>
+        <h2 style="margin-bottom:.2rem">Team dashboard</h2>
+        <p class="lead" style="font-size:.95rem">Verify each payment against the actual transaction before marking it verified.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-cards">
+        <div class="stat-card"><div class="k">Total teams</div><div class="v" id="stat-total">0</div></div>
+        <div class="stat-card"><div class="k">Ideathon</div><div class="v cyan" id="stat-ideathon">0</div></div>
+        <div class="stat-card"><div class="k">Poster Presentation</div><div class="v cyan" id="stat-poster">0</div></div>
+        <div class="stat-card"><div class="k">Awaiting verification</div><div class="v amber" id="stat-pending">0</div></div>
+        <div class="stat-card"><div class="k">Verified</div><div class="v green" id="stat-verified">0</div></div>
+        <div class="stat-card"><div class="k">Rejected</div><div class="v red" id="stat-rejected">0</div></div>
+        <div class="stat-card"><div class="k">Fees verified</div><div class="v green" id="stat-collected">₹0</div></div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <input class="grow" id="filter-search" type="search" placeholder="Search name, email, college, UTR…" aria-label="Search registrations" />
+        <select id="filter-competition" aria-label="Filter by competition">
+          <option value="all">All competitions</option>
+          <option value="Ideathon">Ideathon</option>
+          <option value="Poster Presentation">Poster Presentation</option>
+        </select>
+        <select id="filter-status" aria-label="Filter by payment status">
+          <option value="all">All payment statuses</option>
+          <option value="pending">Pending</option>
+          <option value="submitted">Submitted</option>
+          <option value="verified">Verified</option>
+          <option value="rejected">Rejected</option>
+        </select>
+        <button class="btn btn-ghost" id="refresh-btn" type="button">Refresh</button>
+        <button class="btn btn-primary" id="export-btn" type="button">Export CSV</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Submitted</th>
+              <th>Competition</th>
+              <th>Team leader</th>
+              <th>Participant 2</th>
+              <th>College</th>
+              <th>Domain / title</th>
+              <th>UTR</th>
+              <th>Payment</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr><td colspan="9" class="empty">Loading registrations…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:.8rem">Showing filtered rows. Use Export CSV to download exactly what you see.</p>
+    </main>
+  </div>
+
+  <!-- ============ DETAIL MODAL ============ -->
+  <div class="modal" id="detail-modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 style="margin:0">Registration details</h3>
+        <button class="btn btn-ghost btn-mini" id="detail-close" type="button">Close</button>
+      </div>
+      <div id="detail-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARONEX 1.0 — Innovation for a Sustainable Future</title>
+  <meta name="description" content="ARONEX 1.0 — Innovation for a Sustainable Future. A State-Level Ideathon and Poster Presentation at Sharadchandra Pawar College of Engineering, Dumbarwadi, Otur, Pune, on 22–23 October 2026. Team of 2 · ₹200 per team. Register on Unstop." />
+  <meta name="theme-color" content="#07070f" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="ARONEX home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0070c0" /><stop offset="1" stop-color="#ffc000" />
+            </linearGradient>
+          </defs>
+          <path d="M24 3l18 10.5v21L24 45 6 34.5v-21z" fill="none" stroke="url(#ag)" stroke-width="2.6" />
+          <path d="M17 34l7-20 7 20M19.5 28h9" fill="none" stroke="url(#ag)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="brand-name">ARONEX <span class="brand-ver">1.0</span></span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#competitions">Competitions</a></li>
+        <li><a href="#how">How to register</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a data-rulebook href="#" target="_blank" rel="noopener">Rulebook</a></li>
+        <li><a class="btn btn-primary nav-cta" id="nav-register-cta" href="#register">Register</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-badge"><span class="dot"></span> Registrations open · Team of 2</span>
+          <h1>ARONEX 1.0</h1>
+          <p class="subtitle" data-cfg="event.tagline">State-Level Ideathon &amp; Poster Presentation</p>
+          <p class="hero-theme">🌱 <span data-cfg="event.theme">Innovation for a Sustainable Future</span></p>
+          <p class="venue-line">
+            <span data-cfg="event.venue">Sharadchandra Pawar College of Engineering, Dumbarwadi, Otur, Pune</span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" id="hero-register-cta" href="#register">Register on Unstop</a>
+            <a class="btn btn-ghost" href="#competitions">Explore competitions</a>
+          </div>
+          <div class="hero-meta">
+            <span class="chip">📅 <strong data-cfg="event.dateLabel">22–23 October 2026</strong></span>
+            <span class="chip">👥 Team of <strong>2</strong></span>
+            <span class="chip">💸 <strong data-fee>₹200</strong> per team</span>
+          </div>
+        </div>
+
+        <div class="countdown-card">
+          <h3 id="countdown-label">Event starts in</h3>
+          <div class="countdown" id="countdown">
+            <div class="cd-cell"><div class="cd-num" id="cd-days">00</div><div class="cd-lbl">Days</div></div>
+            <div class="cd-cell"><div class="cd-num" id="cd-hours">00</div><div class="cd-lbl">Hours</div></div>
+            <div class="cd-cell"><div class="cd-num" id="cd-mins">00</div><div class="cd-lbl">Minutes</div></div>
+            <div class="cd-cell"><div class="cd-num" id="cd-secs">00</div><div class="cd-lbl">Seconds</div></div>
+          </div>
+          <p class="countdown-note"><span data-cfg="event.venue">Venue</span></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal"><div class="k">Event dates</div><div class="v" data-cfg="event.dateLabel">22–23 October 2026</div></div>
+          <div class="stat reveal"><div class="k">Venue</div><div class="v">Dumbarwadi, Otur, Pune</div></div>
+          <div class="stat reveal"><div class="k">Team size</div><div class="v">Exactly 2 participants</div></div>
+          <div class="stat reveal"><div class="k">Registration fee</div><div class="v"><span data-fee>₹200</span> per team</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMPETITIONS ============ -->
+    <section class="section" id="competitions">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Two tracks, one stage</span>
+          <h2>Competitions</h2>
+          <p class="lead">Aligned with our theme — <strong>Innovation for a Sustainable Future</strong> — pick a track and register with your teammate on Unstop. Each team competes in exactly one competition on 22–23 October 2026.</p>
+        </div>
+        <div class="grid grid-2" id="competitions-grid">
+          <!-- rendered by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO REGISTER ============ -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Simple process</span>
+          <h2>How to register</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="steps reveal">
+            <div class="step"><div><h4>Choose how to register</h4><p>Register on <strong>Unstop</strong>, or fill the official <strong>Google Form</strong> for your competition (Ideathon or Poster Presentation).</p></div></div>
+            <div class="step"><div><h4>Create your team</h4><p>Add exactly 2 participants and choose your competition and domain.</p></div></div>
+            <div class="step"><div><h4>Pay the fee</h4><p>Pay <strong data-fee>₹200</strong> per team securely through Unstop.</p></div></div>
+            <div class="step"><div><h4>You're registered</h4><p>Your slot is confirmed on Unstop. Watch for updates from the organisers.</p></div></div>
+          </div>
+          <div class="card reveal">
+            <h3>What you'll need</h3>
+            <ul class="comp-points">
+              <li><span class="tick">✓</span> Name, email and mobile number of both members</li>
+              <li><span class="tick">✓</span> College name, course and academic year</li>
+              <li><span class="tick">✓</span> Your competition and domain / theme</li>
+              <li><span class="tick">✓</span> Project title (optional) and a payment method for the ₹200 fee</li>
+            </ul>
+            <p class="muted">Both members must use different email addresses. The team leader receives all updates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEE / PAYMENT ============ -->
+    <section class="section" id="payment">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Registration fee</span>
+          <h2>Fee &amp; payment</h2>
+          <p class="lead" id="payment-lead"><strong data-fee>₹200</strong> per team for the entire event. Payment is completed securely as part of your Unstop registration.</p>
+        </div>
+        <div class="card reveal" id="payment-box">
+          <!-- rendered by main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REGISTER ============ -->
+    <section class="section" id="register">
+      <div class="container">
+
+        <!-- Unstop-first block (default) -->
+        <div id="unstop-register">
+          <div class="section-head center reveal">
+            <span class="eyebrow">Team registration</span>
+            <h2>Register on Unstop</h2>
+            <p class="lead">ARONEX 1.0 registrations are hosted on Unstop. It takes just a few minutes to create your team of 2 and pay the fee.</p>
+          </div>
+
+          <div class="card reveal" style="max-width:680px;margin-inline:auto;text-align:center">
+            <div class="comp-icon" aria-hidden="true">🎟️</div>
+            <h3>Official registration portal</h3>
+            <p class="muted" style="max-width:520px;margin-inline:auto">You'll be taken to the official Unstop event page. Register both team members and complete the ₹200 payment there.</p>
+            <p style="margin:1.4rem 0">
+              <a class="btn btn-primary" id="unstop-cta" href="#" target="_blank" rel="noopener">Register on Unstop</a>
+            </p>
+            <p class="muted" id="unstop-fallback" hidden>The official Unstop registration link will be added here very soon. Please check back shortly or contact the organisers below.</p>
+            <p class="muted" id="unstop-note" hidden></p>
+
+            <div id="alt-forms" hidden>
+              <p class="muted" style="margin:1.7rem 0 .7rem">Or register through the official Google Forms:</p>
+              <div class="link-buttons" id="alt-forms-list"></div>
+            </div>
+
+            <p id="rulebook-row" hidden style="margin:1.4rem 0 0">
+              <a class="btn btn-ghost" id="rulebook-link" href="#" target="_blank" rel="noopener">📘 Read the Rulebook</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Built-in form block (only when registration.mode = "form") -->
+        <div id="builtin-register" hidden>
+          <div class="section-head center reveal">
+            <span class="eyebrow">Team registration</span>
+            <h2>Register your team</h2>
+            <p class="lead">Exactly 2 participants per team. Fields marked <span style="color:var(--red)">*</span> are required.</p>
+          </div>
+
+          <div class="form-wrap" id="registration-success" hidden>
+            <div class="success-panel">
+              <div class="success-icon">🎉</div>
+              <h3>Registration received</h3>
+              <p class="lead">Thank you! Your team has been submitted to the ARONEX 1.0 organising committee.</p>
+              <p class="muted">Payment reference</p>
+              <p class="success-ref" id="success-ref">—</p>
+              <p class="lead">Keep this reference and a screenshot of your payment. The committee will verify your payment and contact the team leader. Please do not pay twice.</p>
+              <button class="btn btn-ghost" id="success-reset" type="button">Register another team</button>
+            </div>
+          </div>
+
+          <div id="form-config-warning" class="notice notice-warn" hidden style="margin-bottom:1.4rem">
+            <strong>Online registration is not switched on yet.</strong>
+            <p>An organiser must add the Supabase connection details in <code>js/config.js</code> before students can submit. See <code>README.md</code>.</p>
+          </div>
+
+          <form class="form-wrap" id="registration-form" novalidate>
+            <div class="form-messages error" id="form-messages" hidden></div>
+
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <fieldset>
+              <legend>Competition &amp; domain</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="competition">Competition <span class="req">*</span></label>
+                  <select id="competition" name="competition" required></select>
+                </div>
+                <div class="field">
+                  <label for="domain">Domain / theme <span class="req">*</span></label>
+                  <input list="domain-list" id="domain" name="domain" placeholder="e.g. Artificial Intelligence & Machine Learning" required />
+                  <datalist id="domain-list"></datalist>
+                </div>
+              </div>
+              <div class="form-row single">
+                <div class="field">
+                  <label for="projectTitle">Project / idea title <span class="muted">(optional)</span></label>
+                  <input id="projectTitle" name="projectTitle" placeholder="Working title of your idea or poster" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Team leader (Participant 1)</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="teamLeaderName">Full name <span class="req">*</span></label>
+                  <input id="teamLeaderName" name="teamLeaderName" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="teamLeaderPhone">Mobile number <span class="req">*</span></label>
+                  <input id="teamLeaderPhone" name="teamLeaderPhone" type="tel" inputmode="numeric" placeholder="10-digit mobile" required />
+                </div>
+              </div>
+              <div class="form-row single">
+                <div class="field">
+                  <label for="teamLeaderEmail">Email <span class="req">*</span></label>
+                  <input id="teamLeaderEmail" name="teamLeaderEmail" type="email" autocomplete="email" required />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Participant 2 (teammate)</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="participant2Name">Full name <span class="req">*</span></label>
+                  <input id="participant2Name" name="participant2Name" required />
+                </div>
+                <div class="field">
+                  <label for="participant2Phone">Mobile number <span class="req">*</span></label>
+                  <input id="participant2Phone" name="participant2Phone" type="tel" inputmode="numeric" placeholder="10-digit mobile" required />
+                </div>
+              </div>
+              <div class="form-row single">
+                <div class="field">
+                  <label for="participant2Email">Email <span class="req">*</span></label>
+                  <input id="participant2Email" name="participant2Email" type="email" required />
+                  <span class="hint">Must be different from the team leader's email.</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>College details</legend>
+              <div class="form-row">
+                <div class="field">
+                  <label for="collegeName">College name <span class="req">*</span></label>
+                  <input id="collegeName" name="collegeName" required />
+                </div>
+                <div class="field">
+                  <label for="course">Course <span class="req">*</span></label>
+                  <input id="course" name="course" placeholder="e.g. B.E. Computer Engineering" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="academicYear">Academic year <span class="req">*</span></label>
+                  <select id="academicYear" name="academicYear" required></select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Payment</legend>
+              <div class="form-row single">
+                <div class="field">
+                  <label for="paymentReference">UPI transaction reference (UTR) <span class="req" id="utr-req">*</span></label>
+                  <input id="paymentReference" name="paymentReference" placeholder="12-digit UTR from your UPI app" />
+                  <span class="hint">Found in your UPI app's payment history. The committee verifies it against the actual transaction.</span>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="field" style="margin-bottom:1.4rem">
+              <label class="check" for="declaration">
+                <input type="checkbox" id="declaration" name="declaration" required />
+                <span>I confirm the details are correct, that our team has exactly 2 participants, and that I have read the payment instructions.</span>
+              </label>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="submit-btn" type="submit">Submit registration</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Good to know</span>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>Who can participate?</summary>
+            <p>Students from colleges across the state. Each team must have exactly 2 participants.</p>
+          </details>
+          <details>
+            <summary>When and where is ARONEX 1.0?</summary>
+            <p><span data-cfg="event.dateLabel">22–23 October 2026</span> at <span data-cfg="event.venue">Sharadchandra Pawar College of Engineering, Dumbarwadi, Otur, Pune</span>.</p>
+          </details>
+          <details>
+            <summary>How do I register?</summary>
+            <p>Registration is on Unstop. Use the <strong>Register on Unstop</strong> button, create your team of 2, and pay the fee there.</p>
+          </details>
+          <details>
+            <summary>What is the registration fee?</summary>
+            <p><span data-fee>₹200</span> per team, covering both participants, paid securely on Unstop.</p>
+          </details>
+          <details>
+            <summary>Can we enter both competitions?</summary>
+            <p>Each registration is for one competition. If you wish to take part in both, register a separate team for the other track.</p>
+          </details>
+          <details>
+            <summary>Who do I contact for help?</summary>
+            <p>Use the contact details in the Contact section below, or message the organisers through the Unstop event page.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact" hidden>
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Need help?</span>
+          <h2>Contact the organisers</h2>
+        </div>
+        <ul class="contact-list reveal" id="contact-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p>© <span id="year">2026</span> ARONEX 1.0 · <span data-cfg="event.college">Sharadchandra Pawar College of Engineering</span></p>
+      <div class="footer-links">
+        <a href="#competitions">Competitions</a>
+        <a href="#register">Register</a>
+        <a href="#faq">FAQ</a>
+        <a data-rulebook href="#" target="_blank" rel="noopener">Rulebook</a>
+        <a href="admin.html" id="admin-link" hidden>Organiser login</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
