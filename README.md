@@ -17,7 +17,10 @@ js/supabaseClient.js  Optional Supabase client (only used in "form" mode)
 js/main.js            Page logic (mode-aware)
 js/admin.js           Optional dashboard logic
 supabase/schema.sql   OPTIONAL database + security (only used in "form" mode)
-assets/favicon.svg    Site icon
+assets/aronex-mark.png    Logo emblem — header + favicon
+assets/aronex-logo.png    Full logo lockup — footer
+assets/favicon.png        Small tab icon
+assets/apple-touch-icon.png  iOS home-screen icon
 ```
 
 > Nothing here invents your UPI ID, phone number, email or prize details.
